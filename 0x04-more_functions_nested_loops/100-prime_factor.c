@@ -1,12 +1,11 @@
 #include <stdio.h>
-int is_prime(long int prime);
 /**
  * main - a program that finds and prints the largest prime factor of the
  * number 612852475143, followed by a new line.
  *
  * Return: return 0 on success
  */
-int main(void) 
+int main(void)
 {
 	unsigned long int i = 3, n = 612852475143;
 
