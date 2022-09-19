@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_rev - a function that prints a string, in reverse, followed by a new 
+ * print_rev - a function that prints a string, in reverse, followed by a new
  * line.
  * @s: pointer to char
  */
@@ -9,18 +9,17 @@ void print_rev(char *s)
 {
 	int i;
 
-	for (i = _strlen(s) - 1; i != 0; --i)
-	{
+	for (i = _strlen(s) - 1; i != -1; --i)
 		_putchar(*(s + i));
-	}
+	_putchar('\n');
 }
 
-
 /**
- * _strlen - a function that returns the length of a string.
- * @s: pointer to a char
+ * _strlen - a function that prints a string, in reverse, followed by a new
+ * line.
+ * @s: pointer to char
  *
- * Return: the lenght of a string
+ * Return: return the length of string
  */
 int _strlen(char *s)
 {
