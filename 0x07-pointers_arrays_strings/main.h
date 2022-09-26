@@ -11,8 +11,8 @@
 	void print_chessboard(char (*a)[8]);
 	void print_diagsums(int *a, int size);
 	void set_string(char **s, char *to);
-
-
+	unsigned int is_present(char *str, char a);
+	unsigned int is_complete(char *str, char *st);
+	unsigned int is_equal(char *str, char *strr);
 
 #endif /* end MAIN */
-
