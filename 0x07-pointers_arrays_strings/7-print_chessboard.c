@@ -1,13 +1,12 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
  * print_chessboard - a function that prints the chessboard.
- * @a: the chessboard as a multidimentional array
+ * @a: a pointer to the first element in the multidimentaional array
  */
 void print_chessboard(char (*a)[8])
 {
-    unsigned int i, j;
+	unsigned int i, j;
 	char ch;
 
 	for (i = 0; i < 8; ++i)
