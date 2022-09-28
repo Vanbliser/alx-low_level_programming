@@ -1,0 +1,1 @@
+int length_of_string(char *s, int i)
