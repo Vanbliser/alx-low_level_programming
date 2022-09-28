@@ -18,5 +18,6 @@ int check(char *a, char *b);
 int wildcmp(char *s1, char *s2);
 char *wildcard(char *a, char *b, char *tmp);
 char *last_wild_card(char a, char* b, char *tmp);
+int chk(char *a, char *b, char *tmp);
 
 #endif /* MAIN */

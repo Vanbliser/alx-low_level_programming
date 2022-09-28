@@ -16,7 +16,7 @@ int wildcmp(char *s1, char *s2)
 
 	tmp = &end_of_line;
 
-	return (check(s1, s2, tmp));
+	return (chk(s1, s2, tmp));
 }
 /**
  * check - a function that checks if a and b are the same
@@ -26,7 +26,7 @@ int wildcmp(char *s1, char *s2)
  *
  * Return: returns 1 if the same, else returns 0
  */
-int check(char *a, char *b, char *tmp)
+int chk(char *a, char *b, char *tmp)
 {
 	if (*b == '*')
 	{
@@ -50,7 +50,7 @@ int check(char *a, char *b, char *tmp)
 	}
 	else
 	{
-		return (check(a + 1, b + 1, tmp));
+		return (chk(a + 1, b + 1, tmp));
 	}
 }
 /**
@@ -63,7 +63,7 @@ int check(char *a, char *b, char *tmp)
  */
 char *wildcard(char *a, char *b, char *tmp)
 {
-	if (*a == *(b + 1) && check(a, b + 1, tmp))
+	if (*a == *(b + 1) && chk(a, b + 1, tmp))
 	{
 		return (a);
 	}
