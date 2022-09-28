@@ -19,7 +19,7 @@ int wildcmp(char *s1, char *s2)
 	return (chk(s1, s2, tmp));
 }
 /**
- * check - a function that checks if a and b are the same
+ * chk - a function that checks if a and b are the same
  * @a: the first character
  * @b: the second character
  * @tmp: a temporary pointer
