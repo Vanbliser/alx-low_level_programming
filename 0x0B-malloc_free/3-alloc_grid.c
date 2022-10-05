@@ -11,7 +11,7 @@
  *
  * Return: a pointer to the 2 dimensional array
  */
-int **alloc_grind(int width, int height)
+int **alloc_grid(int width, int height)
 {
 	int **grid;
 	int i, j;
