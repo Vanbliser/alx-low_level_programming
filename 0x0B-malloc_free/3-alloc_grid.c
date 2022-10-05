@@ -10,27 +10,31 @@
  *
  * Return: a pointer to the 2 dimensional array
  */
-int **alloc_grid(int width, int height)
+int **alloc_grind(int width, int height)
 {
-	int **ptr;
-	int i, j = 0;
-	int *pt;
+	int **grid;
+	int i, j;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-	pt = malloc(sizeof(int) * width * height);
-	if (pt == NULL)
-	{
-		free(pt);
+
+	grid = malloc(height * sizeof(int *));
+	if (grid == NULL)
 		return (NULL);
-	}
-	for (i = 0; i < (width * height); ++i)
-		*(pt + i) = 0;
-	ptr = malloc(sizeof(int *) * height);
-	for (i = 0; i < height; ++i)
+
+	for (i = 0; i < height; i++)
 	{
-		*(ptr + i) = (pt + j);
-		j += width;
+		grid[i] = malloc(width * sizeof(int));
+		if (grid[i] == NULL)
+		{
+			while (i >= 0)		
+				free(grid[i--]);
+			free(grid);
+			return (NULL);
+		}
+		for (j = 0; j < width; j++)
+			grid[i][j] = 0;
 	}
-	return (ptr);
+	return (grid);
 }
+
