@@ -1,5 +1,4 @@
 #include <stdio.h>
-void change_state(int, int *th, int *_xx, int);
 
 /**
  * main - Write a program that prints all possible combinations
@@ -19,75 +18,35 @@ void change_state(int, int *th, int *_xx, int);
  * Return: Return int 0 on successful completion
  */
 int main(void)
-{
-	int i;
-	int j;
-	int k;
-	int l;
-	int _99 = 49;
-	int _999 = 48;
-	int lth = 49;
-	int kth = 48;
-	int boolean;
-	int is_lth = 1;
-	int is_not_lth = 0;
+{   
+    size_t i = 0, j = 0, k = 0, l = 0;
+    size_t a, b;
 
-	for (i = 48; i <= 57; ++i)
-	{
-		for (j = 48; j <= 57; ++j)
-		{
-			for (k = kth; k <= 57; ++k)
-			{
-				for (l = lth; l <= 57; ++l)
-				{
-					putchar((char)(i));
-					putchar((char)(j));
-					putchar(' ');
-					putchar((char)(k));
-					putchar((char)(l));
-					if ((i == 57) && (j == 56) && (k == 57) && (l == 57))
-						break;
-					putchar(',');
-					putchar(' ');
-				}
-				boolean = (k >= 57) && (l >= 57) && (_99 <= 57);
-				change_state(boolean, &lth, &_99, is_lth);
-				if ((i == 57) && (j == 56) && (k == 57) && (l == 57))
-					break;
-			}
-			boolean = (j >= 57) && (k >= 57) && (l >= 57) && (_999 <= 57);
-			change_state(boolean, &kth, &_999, is_not_lth);
-			if ((i == 57) && (j == 56) && (k == 57) && (l == 57))
-				break;
-		}
-		if ((i == 57) && (j == 56) && (k == 57) && (l == 57))
-			break;
-	}
-	putchar('\n');
-	return (0);
-}
-
-/**
- * change_state - a function that sets the th value and the _xx
- * in the calling function
- * @bool: the bolean value of a boolean expression
- * @th: the pointer to the th value in the calling function
- * @_xx: the pointer to the _xx value in the calling function
- * @is_lth: checks if the function is setting lth or kth
- *
- * Return: return void
- */
-void change_state(int bool, int *th, int *_xx, int is_lth)
-{
-	if (bool == 1)
-	{
-		*th = ++*_xx;
-	}
-	else
-	{
-		if (is_lth)
-			*th = 48;
-		if (*_xx > 57)
-			*_xx = 48;
-	}
+    for (i = '0'; i <= '9'; i++)
+    {
+        for (j = '0'; j <= '9'; j++)
+        {
+            a = i;
+            b = j + 1;
+            for (k = a; k <= '9'; k++)
+            {
+                for (l = b; l <= '9'; l++)
+                {
+                    putchar(i);
+                    putchar(j);
+                    putchar(' ');
+                    putchar(k);
+                    putchar(l);
+                    if (i == '9' && j == '8' && k == '9' && l == '9')
+                        break;
+                    putchar(',');
+                    putchar(' ');
+                }
+                a = '0';
+                b = '0';
+            }
+        }
+    }
+    putchar('\n');
+    return (0);
 }
