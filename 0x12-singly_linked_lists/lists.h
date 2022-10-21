@@ -18,7 +18,6 @@ typedef struct list_s
 
 /* Header files */
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 
 /* Function prototype */
@@ -30,7 +29,7 @@ void free_list(list_t *head);
 int _putchar(char c);
 
 /* Helper functions */
-unsigned int length(char *str);
+unsigned int length(const char *str);
 
 #endif /* MAIN_H */
 
