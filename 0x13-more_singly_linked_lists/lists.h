@@ -1,9 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
 /* preprocessor directives */
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * struct listint_s - singly linked list
