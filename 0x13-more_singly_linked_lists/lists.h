@@ -1,6 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+
+/* preprocessor directives */
+#include <stdlib.h>
+
 /**
  * struct listint_s - singly linked list
  * @n: integer
