@@ -37,8 +37,18 @@ int main(int argc, char **argv)
 
 	pt1 = malloc(sizeof(char *) * (l2 + 1));
 
+	if (pt1 == NULL)
+		return (1);
+
 	for (i = 0; i <= l2; ++i)
+	{
 		*(pt1 + i) = calloc(l1 + l2 + 1, sizeof(unsigned int));
+		if (*(pt1 + i) == NULL)
+		{
+			_free(pt1, i);
+			return (1);
+		}
+	}
 
 	for (i = 0; i < l2; ++i)
 	{
