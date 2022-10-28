@@ -24,8 +24,8 @@ unsigned int binary_to_uint(const char *b)
 	}
 	/* Recall that 1 << 4 === 1 * 2^4 && 0 << 4 === 0 * 2^4 === 0 */
 	for (i = 0; i < len; ++i)
-		result += (   ((b[i] == '0') ? 0 : 1)  <<  (len - (i + 1))   );
+		result += (((b[i] == '0') ? 0 : 1)  <<  (len - (i + 1)));
 
-	return (result);		
+	return (result);
 }
 
