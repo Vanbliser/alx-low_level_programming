@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* Included library */
+#include <stdlib.h>
+
 
 /* Function prototypes */
 unsigned int binary_to_uint(const char *b);
