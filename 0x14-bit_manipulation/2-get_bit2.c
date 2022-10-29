@@ -11,11 +11,17 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int a = 1 << index;
+	unsigned long int __attribute__ ((unused)) div, mod, counter = 0;
 
-	if ((n & a) == 0)
-		return (0);
-	else
-		return (1);
+	while (n)
+	{
+		div = n / 2;
+		mod = n % 2;
+		if (counter == index)
+			return ((int)mod);
+		counter++;
+		n = div;
+	}
+	return (-1);
 }
 
