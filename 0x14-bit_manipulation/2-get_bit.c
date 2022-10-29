@@ -11,10 +11,12 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	if ((n > (1 << 64)) || (index > (1 << 64)))
+	unsigned long int __attribute__ ((unused)) a, i = 1;
+
+	if ((n > (i << 63)) || (index > (i << 63)))
 		return (-1);
 
-	unsigned long int a = 1 << index;
+	a = i << index;
 
 	if ((n & a) == 0)
 		return (0);
