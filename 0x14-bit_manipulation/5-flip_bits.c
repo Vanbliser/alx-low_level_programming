@@ -12,32 +12,14 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long __attribute__ ((unused)) i, old_start, new_start, sum;
-	unsigned long int a = n ^ m;
-	unsigned int count = 0;
+	unsigned long int xor = n ^ m, bits_count = 0;
 
-	if (a == 0)
+	while (xor > 0)
 	{
-		return (count);
+		bits_count += (xor & 1);
+		xor >>= 1;
 	}
-	else
-	{
-		for (i = 1; i <= n; i *= 2)
-			new_start = i;
-		count++;
-		sum = new_start;
-		while (new_start > 1)
-		{
-			old_start = new_start;
-			for (i = 1; i < old_start; i *= 2)
-				new_start = i;
-			if ((sum + new_start) <= a)
-			{
-				count++;
-				sum += new_start;
-			}
-		}
-		return (count);
-	}
+
+	return (bits_count);
 }
 
