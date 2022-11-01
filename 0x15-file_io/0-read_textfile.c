@@ -14,7 +14,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	char *text;
-	int fd;
+	int fd, wt;
 	ssize_t no_letters;
 
 	/* if filename is NULL, return 0 */
@@ -37,12 +37,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	text[no_letters] = '\0';
-	dprintf(1, "%s", text);
 
-	/* close the file descriptor and free malloc */
+	/* write to standard output or return 0 if failed */
+	wt = write(1, text, no_letters);
+	if (wt == -1)
+		return (0);
+
+	/* if number of read & print letters are equal, return it, else return 0 */
+	if (wt == no_letters)
+		return (no_letters);
+	else
+		return (0);
+
 	close(fd);
 	free(text);
-
-	return (no_letters);
 }
 
