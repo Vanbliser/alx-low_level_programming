@@ -38,7 +38,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	text[no_letters] = '\0';
 
-	dprintf(1, "%S", text);
+	dprintf(1, "%s", text);
 
 	close(fd);
 	free(text);
