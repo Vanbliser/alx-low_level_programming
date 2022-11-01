@@ -8,6 +8,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stddef.h>
+#include <stdio.h>
+#include <limits.h>
 
 /* Functions prototype */
 ssize_t read_textfile(const char *filename, size_t letters);

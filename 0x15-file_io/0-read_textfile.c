@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * read_textfile - a function that reads a text file and prints it to the POSIX
@@ -18,21 +17,29 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int fd;
 	ssize_t no_letters;
 
-	if (!filename)
+	/* if filename is NULL, return 0 */
+	if (filename == NULL)
 		return (0);
+
+	/* if an error occured in open system call, return 0 */
 	fd = open(filename, O_RDONLY, 0100);
-	if (fd == -1 || (letters <= 0))
+	if (fd == -1)
+		return (0);
+
+	/* read the file to a dynamically allocated memory */
+	if (letters > SSIZE_MAX)
 		return (0);
 	text = malloc((sizeof(char) * letters) + 1);
 	no_letters = read(fd, text, letters);
-	if (no_letters < 0)
+	if (no_letters == -1) /* if error occured in read, free malloc & return 0 */
 	{
-		free(text);
+		free (text);
 		return (0);
 	}
 	text[no_letters] = '\0';
-	write(1, text, no_letters);
+	dprintf(1, "%s", text);
 
+	/* close the file descriptor and free malloc */
 	close(fd);
 	free(text);
 
