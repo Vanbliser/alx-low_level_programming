@@ -43,12 +43,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (wt == -1)
 		return (0);
 
-	/* if number of read & print letters are equal, return it, else return 0 */
-	if (wt == no_letters)
-		return (no_letters);
-	else
-		return (0);
-
+	return (no_letters);
 	close(fd);
 	free(text);
 }
