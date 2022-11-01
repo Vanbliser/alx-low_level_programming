@@ -25,7 +25,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	text = malloc((sizeof(char) * letters) + 1);
 	no_letters = read(fd, text, letters);
-	printf("\nno_letters=%li, letters=%lu\n", no_letters, letters);
 	if (no_letters < 0)
 	{
 		free(text);
