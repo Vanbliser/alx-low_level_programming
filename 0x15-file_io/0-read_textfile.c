@@ -14,7 +14,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	char *text;
-	int __attribute__ ((unused)) fd, wt;
+	int fd;
 	ssize_t no_letters;
 
 	/* if filename is NULL, return 0 */
