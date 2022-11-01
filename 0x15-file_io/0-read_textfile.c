@@ -38,16 +38,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	text[no_letters] = '\0';
 
-	/* write to standard output or return 0 if failed */
-	wt = write(1, text, no_letters + 1);
-	if (wt == -1)
-		return (0);
-
-	/* return number of letters read or printed */
-	if (wt == no_letters)
-		return (no_letters);
-	else
-		return (wt);
+	dprintf(1, "%S", text);
 
 	close(fd);
 	free(text);
