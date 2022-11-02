@@ -31,7 +31,7 @@ int main(int ac, char **av)
 		error_msg(0, 98, rd, file_from);
 	fd_file_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_file_to == -1)
-		error_msg(0, 98, wr, file_to);
+		error_msg(0, 99, wr, file_to);
 
 	buffer = malloc(1025);
 	buffer[1024] = '\0';
@@ -42,7 +42,7 @@ int main(int ac, char **av)
 			error_msg(0, 98, rd, file_from);
 		num_wr = write(fd_file_to, buffer, 1024);
 		if (num_wr == -1)
-			error_msg(0, 98, wr, file_to);
+			error_msg(0, 99, wr, file_to);
 	}
 
 	cls = close(fd_file_to);
@@ -69,9 +69,9 @@ int main(int ac, char **av)
 void error_msg(int fd, int ret, char *str, char *str1)
 {
 	if (fd == 0)
-		dprintf(2, "Error: Can't %s %s\n", str, str1);
+		dprintf(STDOUT_FILENO, "Error: Can't %s %s\n", str, str1);
 	else
-		dprintf(2, "Error: Can't %s %s %d\n", str, str1, fd);
+		dprintf(STDOUT_FILENO, "Error: Can't %s %s %d\n", str, str1, fd);
 
 	exit(ret);
 }
