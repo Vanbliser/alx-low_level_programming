@@ -52,6 +52,7 @@ int main(int ac, char **av)
 	if (cls == -1)
 		error_msg(fd_file_from, 100, cl, "fd");
 
+	free(buffer);
 	return (0);
 }
 
