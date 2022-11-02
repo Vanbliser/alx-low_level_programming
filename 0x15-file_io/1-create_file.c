@@ -23,21 +23,21 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
+	if (text_content == NULL)
+		text_content = "";
+
 	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
 	if (fd == -1)
 		return (fd);
 
 	for (; *(text_content + i) != '\0'; ++i)
 		;
-	if (i > 0)
-	{
-		wr = write(fd, text_content, i);
-		if (wr == -1)
-			return (wr);
-	}
+	wr = write(fd, text_content, i);
+	if (wr == -1)
+		return (wr);
 	cl = close(fd);
 	if (cl == -1)
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	return (1);
 }
