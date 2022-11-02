@@ -17,7 +17,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, cl;
-	size_t i;
+	size_t i = 0;
 	ssize_t wr;
 
 	if (filename == NULL)
@@ -27,14 +27,14 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 		return (fd);
 
-	for (i = 0; *(text_content + i) != '\0'; ++i)
+	for (; *(text_content + i) != '\0'; ++i)
 		;
-
-	*(text_content + i) = EOF;
-
-	wr = write(fd, text_content, i);
-	if (wr == -1)
-		return (wr);
+	if (i > 0)
+	{
+		wr = write(fd, text_content, i);
+		if (wr == -1)
+			return (wr);
+	}
 	cl = close(fd);
 	if (cl == -1)
 		exit (EXIT_FAILURE);

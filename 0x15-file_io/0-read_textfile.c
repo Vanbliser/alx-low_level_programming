@@ -39,7 +39,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	text[no_read] = '\0';
 
 	/* write to standard output or return 0 if failed */
-	no_print = write(1, text, no_read);
+	no_print = write(STDOUT_FILENO, text, no_read);
 	if (no_print == -1 || no_print != no_read)
 		return (0);
 
