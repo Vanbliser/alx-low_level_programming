@@ -10,7 +10,7 @@ void error_msg(int fd, int ret, char *str, char *str1);
  */
 int main(int ac, char **av)
 {
-	char *file_to, *file_from, *buffer;
+	char *file_to, *file_from, buffer[1024];
 	int fd_file_to, fd_file_from, cls;
 	ssize_t num_rd = 1024, num_wr;
 	char rd[] = "read from file";
@@ -29,11 +29,10 @@ int main(int ac, char **av)
 	fd_file_from = open(file_from, O_RDONLY);
 	if (fd_file_from == -1)
 		error_msg(0, 98, rd, file_from);
-	fd_file_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd_file_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
 	if (fd_file_to == -1)
 		error_msg(0, 99, wr, file_to);
 
-	buffer = malloc(1025);
 	buffer[1024] = '\0';
 	while (num_rd == 1024)
 	{
@@ -52,7 +51,6 @@ int main(int ac, char **av)
 	if (cls == -1)
 		error_msg(fd_file_from, 100, cl, "fd");
 
-	free(buffer);
 	return (0);
 }
 
