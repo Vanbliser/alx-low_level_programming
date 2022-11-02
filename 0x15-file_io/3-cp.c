@@ -14,12 +14,12 @@ int main(int ac, char **av)
 	int fd_file_to, fd_file_from, cls;
 	ssize_t num_rd = 1024, num_wr;
 	char rd[] = "read from file";
-	char cl[] = "close";
+	char cl[] = "close fd";
 	char wr[] = "write to";
 
 	if (ac > 3 || ac < 3)
 	{
-		write(2, "Usage: cp file_from file_to\n", 28);
+		write(STDOUT_FILENO, "Usage: cp file_from file_to\n", 28);
 		return (97);
 	}
 
@@ -46,10 +46,10 @@ int main(int ac, char **av)
 
 	cls = close(fd_file_to);
 	if (cls == -1)
-		error_msg(fd_file_to, 100, cl, "fd");
+		error_msg(fd_file_to, 100, cl, NULL);
 	cls = close(fd_file_from);
 	if (cls == -1)
-		error_msg(fd_file_from, 100, cl, "fd");
+		error_msg(fd_file_from, 100, cl, NULL);
 
 	return (0);
 }
@@ -67,9 +67,9 @@ int main(int ac, char **av)
 void error_msg(int fd, int ret, char *str, char *str1)
 {
 	if (fd == 0)
-		dprintf(STDOUT_FILENO, "Error: Can't %s %s\n", str, str1);
-	else
-		dprintf(STDOUT_FILENO, "Error: Can't %s %s %d\n", str, str1, fd);
+		dprintf(STDOUT_FILENO, "Error: Can't %s %S\n", str, str1);
+	if (str1 == NULL)
+		dprintf(STDOUT_FILENO, "Error: Can't %s %d\n", str, fd);
 
 	exit(ret);
 }
