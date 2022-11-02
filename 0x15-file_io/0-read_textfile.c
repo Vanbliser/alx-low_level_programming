@@ -14,7 +14,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	char *text;
-	int fd;
+	int fd, cl;
 	ssize_t no_read, no_print;
 
 	/* if filename is NULL, return 0 */
@@ -43,7 +43,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (no_print == -1 || no_print != no_read)
 		return (0);
 
-	close(fd);
+	cl = close(fd);
+	if (cl == -1)
+		exit (EXIT_FAILURE);
 	free(text);
 
 	/* return number of letters read or printed */

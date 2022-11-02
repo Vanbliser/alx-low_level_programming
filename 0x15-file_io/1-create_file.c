@@ -16,7 +16,7 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd;
+	int fd, cl;
 	size_t i;
 	ssize_t wr;
 
@@ -35,7 +35,9 @@ int create_file(const char *filename, char *text_content)
 	wr = write(fd, text_content, i);
 	if (wr == -1)
 		return (wr);
-	close(fd);
+	cl = close(fd);
+	if (cl == -1)
+		exit (EXIT_FAILURE);
 
 	return (1);
 }
