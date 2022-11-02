@@ -45,7 +45,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	cl = close(fd);
 	if (cl == -1)
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	free(text);
 
 	/* return number of letters read or printed */
