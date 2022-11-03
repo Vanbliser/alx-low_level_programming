@@ -10,36 +10,31 @@ void error_msg(int fd, int ret, char *str, char *str1);
  */
 int main(int ac, char **av)
 {
-	char *buffer, *file_to, *file_from;
+	char buffer[1024], *file_to = av[2], *file_from = av[1];
 	int fd_file_to, fd_file_from, cls;
-	ssize_t num_rd = 1024, num_wr;
+	ssize_t num_rd, num_wr;
 
-	if (ac > 3 || ac < 3)
+	if (ac != 3)
 	{
-		write(STDOUT_FILENO, "Usage: cp file_from file_to\n", 28);
+		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
-	file_to = av[2];
-	file_from = av[1];
-	buffer = malloc(1024);
-
 	fd_file_from = open(file_from, O_RDONLY);
-	if (fd_file_from == -1)
+	if (fd_file_from < 0)
 		error_msg(0, 98, "read from file", file_from);
-	fd_file_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd_file_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_file_to == -1)
 		error_msg(0, 99, "write to", file_to);
 
-	while (num_rd == 1024)
+	while ((num_rd = read(fd_file_from, buffer, 1024)) > 0)
 	{
-		num_rd = read(fd_file_from, buffer, 1024);
-		if (num_rd == -1)
-			error_msg(0, 98, "read from file", file_from);
-		num_wr = write(fd_file_to, buffer, 1024);
-		if (num_wr == -1)
+		num_wr = write(fd_file_to, buffer, num_rd);
+		if (num_wr == -1 || num_wr != num_rd)
 			error_msg(0, 99, "write to", file_to);
 	}
+	if (num_rd == -1)
+		error_msg(0, 98, "read from file", file_from);
 
 	cls = close(fd_file_to);
 	if (cls == -1)
@@ -48,7 +43,6 @@ int main(int ac, char **av)
 	if (cls == -1)
 		error_msg(fd_file_from, 100, "close fd", NULL);
 
-	free(buffer);
 	return (0);
 }
 
