@@ -22,8 +22,7 @@ int main(int ac, char **av)
 
 	file_to = av[2];
 	file_from = av[1];
-	buffer = malloc(1025);
-	buffer[1024] = '\0';
+	buffer = malloc(1024);
 
 	fd_file_from = open(file_from, O_RDONLY);
 	if (fd_file_from == -1)
