@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	fd_file_from = open(file_from, O_RDONLY);
 	if (fd_file_from < 0)
 		error_msg(0, 98, "read from file", file_from);
-	fd_file_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd_file_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_file_to == -1)
 		error_msg(0, 99, "write to", file_to);
 
