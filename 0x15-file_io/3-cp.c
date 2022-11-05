@@ -16,7 +16,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
@@ -59,9 +59,9 @@ int main(int ac, char **av)
 void error_msg(int fd, int ret, char *str, char *str1)
 {
 	if (fd == 0)
-		dprintf(STDOUT_FILENO, "Error: Can't %s %s\n", str, str1);
+		dprintf(STDERR_FILENO, "Error: Can't %s %s\n", str, str1);
 	if (str1 == NULL)
-		dprintf(STDOUT_FILENO, "Error: Can't %s %d\n", str, fd);
+		dprintf(STDERR_FILENO, "Error: Can't %s %d\n", str, fd);
 
 	exit(ret);
 }
