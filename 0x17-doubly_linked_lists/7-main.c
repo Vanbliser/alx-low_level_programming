@@ -24,13 +24,26 @@ int main(void)
 	if (print == 0)
 		printf("NULL\n");
 
-	printf("\n========LENGTH OF 0, ADD AT INDEX 5====================\n\n");
+	printf("\n========LENGTH OF 0, ADD AT INDEX 1====================\n\n");
 	h = NULL;
 	print = print_dlistint(h);
 	if (print == 0)
 		printf("NULL\n");
 	printf("-----------------\n");
-	insert_dnodeint_at_index(&h, 5, 5);
+	insert_dnodeint_at_index(&h, 1, 1);
+	print = print_dlistint(h);
+	if (print == 0)
+		printf("NULL\n");
+	free_dlistint(h);
+	h = NULL;
+
+	printf("\n========LENGTH OF 0, ADD AT INDEX 2====================\n\n");
+	h = NULL;
+	print = print_dlistint(h);
+	if (print == 0)
+		printf("NULL\n");
+	printf("-----------------\n");
+	insert_dnodeint_at_index(&h, 2, 2);
 	print = print_dlistint(h);
 	if (print == 0)
 		printf("NULL\n");
