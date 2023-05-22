@@ -22,4 +22,11 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 
+/* HELPER FUNCTIONS */
+int char_to_int(char i);
+unsigned int is_present(char *str, char a);
+unsigned int is_complete(char *str, char *st);
+unsigned int is_present_in_string(char *str, char a);
+unsigned int is_equal(char *str, char *strr);
+
 #endif /*MAIN*/
