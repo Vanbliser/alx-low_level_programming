@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _islower - a function that checks for lowercase character.
  * from 97 to 122

@@ -1,6 +1,3 @@
-#include "main.h"
-#include <stdio.h>
-
 /**
  * _abs - Write a function that computes the absolute value of an integer.
  * Prototype: int _abs(int);

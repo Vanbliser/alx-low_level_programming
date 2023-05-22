@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _isalpha - Write a function that checks for alphabetic character.
  * Prototype: int _isalpha(int c);
