@@ -14,26 +14,26 @@ int binary_search(int *array, size_t size, int value)
 {
 	size_t i, L, R, M;
 
-	L = 0;
-	R = size - 1;
-	printf("Searching in array: ");
-	for (i = L; i < R; ++i)
-		printf("%d, ", array[i]);
-	printf("%d\n", array[i]);
-	while (L < R)
+	if (array != NULL && size > 0)
 	{
-		M = (size_t)((int)((L + R) / 2));
-		if (array[M] == value)
-			return (M);
-		if (array[M] < value)
-			L = M + 1;
-		else
-			R = M - 1;
-		printf("Searching in array: ");
-		for (i = L; i < R; ++i)
-			printf("%d, ", array[i]);
-		printf("%d\n", array[i]);
+		L = 0;
+		R = size - 1;
+		do {
+			printf("Searching in array: ");
+			for (i = L; i < R; ++i)
+				printf("%d, ", array[i]);
+			printf("%d\n", array[i]);
 
+			M = (size_t)((int)((L + R) / 2));
+
+			if (array[M] == value)
+				return (M);
+			if (array[M] < value)
+				L = M + 1;
+			else
+				R = M - 1;
+
+		} while (L <= R);
 	}
 	return (-1);
 }
